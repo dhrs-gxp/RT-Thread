@@ -19,4 +19,10 @@
   ..\Library\inc\stm32f4xx_rng.h ..\Library\inc\stm32f4xx_can.h \
   ..\Library\inc\stm32f4xx_dac.h ..\Library\inc\stm32f4xx_dcmi.h \
   ..\Library\inc\stm32f4xx_fsmc.h ..\MyFiles\usart\usart.h \
-  D:\Keil_v5\ARM\ARMCLANG\include\stdio.h
+  D:\Keil_v5\ARM\ARMCLANG\include\stdio.h \
+  D:\Keil_v5\ARM\Packs\RealThread\RT-Thread\3.1.5\include\rtthread.h \
+  ..\User\rtconfig.h \
+  D:\Keil_v5\ARM\Packs\RealThread\RT-Thread\3.1.5\include\rtdebug.h \
+  D:\Keil_v5\ARM\Packs\RealThread\RT-Thread\3.1.5\include\rtdef.h \
+  D:\Keil_v5\ARM\ARMCLANG\include\stdarg.h \
+  D:\Keil_v5\ARM\Packs\RealThread\RT-Thread\3.1.5\include\rtservice.h

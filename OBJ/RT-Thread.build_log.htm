@@ -27,9 +27,22 @@ Project File Date:  03/03/2024
 <h2>Output:</h2>
 *** Using Compiler 'V6.21', folder: 'D:\Keil_v5\ARM\ARMCLANG\Bin'
 Build target 'Target 1'
-"..\OBJ\RT-Thread.axf" - 0 Error(s), 0 Warning(s).
+compiling usart.c...
+linking...
+..\OBJ\RT-Thread.axf: Error: L6218E: Undefined symbol list_mem (referred from msh.o).
+Not enough information to list image symbols.
+Not enough information to list load addresses in the image map.
+Finished: 2 information, 0 warning and 1 error messages.
+"..\OBJ\RT-Thread.axf" - 1 Error(s), 0 Warning(s).
 
 <h2>Software Packages used:</h2>
+
+Package Vendor: RealThread
+                https://www.rt-thread.org/download/mdk/RealThread.RT-Thread.3.1.5.pack
+                RealThread::RT-Thread@3.1.5
+                RT-Thread Software Components
+   * Component: kernel Version: 3.1.5
+   * Component: shell Version: 3.1.5
 
 Package Vendor: Keil
                 http://www.keil.com/pack/Keil.STM32F4xx_DFP.1.0.8.pack
@@ -37,9 +50,39 @@ Package Vendor: Keil
                 STMicroelectronics STM32F4 Series Device Support, Drivers and Examples
 
 <h2>Collection of Component include folders:</h2>
+  ./RTE/RTOS
+  ./RTE/_Target_1
   D:/Keil_v5/ARM/Packs/Keil/STM32F4xx_DFP/1.0.8/Device/Include
+  D:/Keil_v5/ARM/Packs/RealThread/RT-Thread/3.1.5/components/finsh
+  D:/Keil_v5/ARM/Packs/RealThread/RT-Thread/3.1.5/include
 
 <h2>Collection of Component Files used:</h2>
+
+   * Component: RealThread::RTOS&RT-Thread:kernel@3.1.5
+      Source file:   libcpu/arm/cortex-m4/cpuport.c
+      Source file:   libcpu/arm/cortex-m4/context_rvds.S
+      Include file:  bsp/_template/rtconfig.h
+      Source file:   src/idle.c
+      Source file:   src/mem.c
+      Source file:   src/clock.c
+      Source file:   src/object.c
+      Source file:   src/thread.c
+      Source file:   src/mempool.c
+      Source file:   bsp/_template/board.c
+      Source file:   src/irq.c
+      Source file:   src/kservice.c
+      Source file:   src/ipc.c
+      Source file:   src/scheduler.c
+      Source file:   src/timer.c
+      Source file:   src/components.c
+
+   * Component: RealThread::RTOS&RT-Thread:shell@3.1.5
+      Source file:   components/finsh/shell.c
+      Source file:   components/finsh/finsh_port.c
+      Source file:   components/finsh/msh.c
+      Include file:  components/finsh/finsh_config.h
+      Source file:   components/finsh/cmd.c
+Target not created.
 Build Time Elapsed:  00:00:00
 </pre>
 </body>

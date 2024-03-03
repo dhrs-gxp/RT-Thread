@@ -340,7 +340,7 @@
               <MiscControls></MiscControls>
               <Define>STM32F40_41xxx,USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>..\User;..\CMSIS;..\Library\inc;..\FreeRTOS\include;..\FreeRTOS\port\RVDS\ARM_CM4F;..\MyFiles\delay;..\MyFiles\sys;..\MyFiles\usart</IncludePath>
+              <IncludePath>..\User;..\CMSIS;..\Library\inc;..\FreeRTOS\include;..\FreeRTOS\port\RVDS\ARM_CM4F;..\MyFiles\delay;..\MyFiles\sys;..\MyFiles\usart;..\MyFiles\led</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -429,6 +429,11 @@
               <FileType>1</FileType>
               <FilePath>..\MyFiles\usart\usart.c</FilePath>
             </File>
+            <File>
+              <FileName>led.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\MyFiles\led\led.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -471,13 +476,29 @@
             </File>
           </Files>
         </Group>
+        <Group>
+          <GroupName>::RTOS</GroupName>
+        </Group>
       </Groups>
     </Target>
   </Targets>
 
   <RTE>
     <apis/>
-    <components/>
+    <components>
+      <component Cbundle="RT-Thread" Cclass="RTOS" Cgroup="kernel" Cvendor="RealThread" Cversion="3.1.5" condition="CMSIS Core with RTOS">
+        <package name="RT-Thread" schemaVersion="1.4" url="https://www.rt-thread.org/download/mdk/" vendor="RealThread" version="3.1.5"/>
+        <targetInfos>
+          <targetInfo name="Target 1"/>
+        </targetInfos>
+      </component>
+      <component Cbundle="RT-Thread" Cclass="RTOS" Cgroup="shell" Cvendor="RealThread" Cversion="3.1.5" condition="shell">
+        <package name="RT-Thread" schemaVersion="1.4" url="https://www.rt-thread.org/download/mdk/" vendor="RealThread" version="3.1.5"/>
+        <targetInfos>
+          <targetInfo name="Target 1"/>
+        </targetInfos>
+      </component>
+    </components>
     <files>
       <file attr="config" category="sourceAsm" condition="ARMCC" name="Device\ARM\ARMCM4\Source\ARM\startup_ARMCM4.s" version="1.0.1">
         <instance index="0" removed="1">RTE\Device\ARMCM4\startup_ARMCM4.s</instance>
@@ -534,16 +555,36 @@
         <targetInfos/>
       </file>
       <file attr="config" category="source" name="bsp\_template\board.c" version="3.1.5">
-        <instance index="0" removed="1">RTE\RTOS\board.c</instance>
+        <instance index="0">RTE\RTOS\board.c</instance>
         <component Cbundle="RT-Thread" Cclass="RTOS" Cgroup="kernel" Cvendor="RealThread" Cversion="3.1.5" condition="CMSIS Core with RTOS"/>
         <package name="RT-Thread" schemaVersion="1.4" url="https://www.rt-thread.org/download/mdk/" vendor="RealThread" version="3.1.5"/>
-        <targetInfos/>
+        <targetInfos>
+          <targetInfo name="Target 1"/>
+        </targetInfos>
+      </file>
+      <file attr="config" category="header" name="components\finsh\finsh_config.h" version="3.1.5">
+        <instance index="0">RTE\RTOS\finsh_config.h</instance>
+        <component Cbundle="RT-Thread" Cclass="RTOS" Cgroup="shell" Cvendor="RealThread" Cversion="3.1.5" condition="shell"/>
+        <package name="RT-Thread" schemaVersion="1.4" url="https://www.rt-thread.org/download/mdk/" vendor="RealThread" version="3.1.5"/>
+        <targetInfos>
+          <targetInfo name="Target 1"/>
+        </targetInfos>
+      </file>
+      <file attr="config" category="source" name="components\finsh\finsh_port.c" version="3.1.5">
+        <instance index="0">RTE\RTOS\finsh_port.c</instance>
+        <component Cbundle="RT-Thread" Cclass="RTOS" Cgroup="shell" Cvendor="RealThread" Cversion="3.1.5" condition="shell"/>
+        <package name="RT-Thread" schemaVersion="1.4" url="https://www.rt-thread.org/download/mdk/" vendor="RealThread" version="3.1.5"/>
+        <targetInfos>
+          <targetInfo name="Target 1"/>
+        </targetInfos>
       </file>
       <file attr="config" category="header" name="bsp\_template\rtconfig.h" version="3.1.5">
-        <instance index="0" removed="1">RTE\RTOS\rtconfig.h</instance>
+        <instance index="0">RTE\RTOS\rtconfig.h</instance>
         <component Cbundle="RT-Thread" Cclass="RTOS" Cgroup="kernel" Cvendor="RealThread" Cversion="3.1.5" condition="CMSIS Core with RTOS"/>
         <package name="RT-Thread" schemaVersion="1.4" url="https://www.rt-thread.org/download/mdk/" vendor="RealThread" version="3.1.5"/>
-        <targetInfos/>
+        <targetInfos>
+          <targetInfo name="Target 1"/>
+        </targetInfos>
       </file>
     </files>
   </RTE>

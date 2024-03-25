@@ -74,17 +74,17 @@ void rt_hw_board_init(void)
 
 #ifdef RT_USING_CONSOLE
 
-static int uart_init(void)
-{
-#error "TODO 2: Enable the hardware uart and config baudrate."
-    return 0;
-}
-INIT_BOARD_EXPORT(uart_init);
+//static int uart_init(void)
+//{
+//#error "TODO 2: Enable the hardware uart and config baudrate."
+//    return 0;
+//}
+//INIT_BOARD_EXPORT(uart_init);
 
-void rt_hw_console_output(const char *str)
-{
-#error "TODO 3: Output the string 'str' through the uart."
-}
+//void rt_hw_console_output(const char *str)
+//{
+//#error "TODO 3: Output the string 'str' through the uart."
+//}
 
 #endif
 

@@ -1,6 +1,6 @@
 #ifndef __LED_H
 #define __LED_H
 
-static int LED_Init(void);
+void LED_Config(void); 
 
 #endif

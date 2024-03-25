@@ -1,8 +1,8 @@
+#include "stm32f4xx.h"
 #include "led.h"
-#include "stm32f4xx_gpio.h"
-#include "rtdef.h"
+#include "rtthread.h"
 
-static int LED_Init(void)
+void LED_Config(void)
 {    	 
 	GPIO_InitTypeDef  GPIO_InitStructure;
 	
@@ -17,9 +17,11 @@ static int LED_Init(void)
 	GPIO_Init(GPIOF, &GPIO_InitStructure);//初始化
 	
 	GPIO_SetBits(GPIOF, GPIO_Pin_9 | GPIO_Pin_10);//GPIOF9,F10设置高，灯灭
-	
-	return 0;
 }
 
-
-INIT_BOARD_EXPORT(LED_Init);
+static int led_init(void)
+{
+	LED_Config();
+	return 0;
+}
+INIT_BOARD_EXPORT(led_init);

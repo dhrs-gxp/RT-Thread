@@ -4,26 +4,31 @@
 #include "usart.h"
 #include "stdio.h"
 #include "string.h"
+#include "oled.h"
 
 #define THREAD1_PRIORITY         1
 #define THREAD2_PRIORITY         2
 #define THREAD3_PRIORITY         3
-#define THREAD4_PRIORITY         0
+#define THREAD4_PRIORITY         4
+#define THREAD5_PRIORITY         5
 
 #define THREAD1_STACK_SIZE       512
 #define THREAD2_STACK_SIZE       512
 #define THREAD3_STACK_SIZE       512
 #define THREAD4_STACK_SIZE       512
+#define THREAD5_STACK_SIZE       512
 
 #define THREAD1_TIMESLICE        5
 #define THREAD2_TIMESLICE        5
 #define THREAD3_TIMESLICE        5
 #define THREAD4_TIMESLICE        5
+#define THREAD5_TIMESLICE        5
 
 static rt_thread_t tid1 = RT_NULL;
 static rt_thread_t tid2 = RT_NULL;
 static rt_thread_t tid3 = RT_NULL;
 static rt_thread_t tid4 = RT_NULL;
+static rt_thread_t tid5 = RT_NULL;
 
 rt_sem_t sem_key1 = RT_NULL;
 rt_sem_t sem_key2 = RT_NULL;
@@ -76,6 +81,17 @@ static void thread4_entry(void *paramenter) {
 	}
 }
 
+static void thread5_entry(void *paramenter) {
+	static int cnt = 0;
+	static char str[4] = "";
+	while(1) {
+		sprintf(str, "%2d", cnt);
+		OLED_ShowStr(0, 0, str, 1);
+		cnt = (cnt > 19) ? 0 : (cnt + 1);
+		rt_thread_mdelay(500);
+	}
+}
+
 int main(void)
 { 
 	sem_key1 = rt_sem_create("sem_key1", 0, RT_IPC_FLAG_PRIO);
@@ -116,6 +132,15 @@ int main(void)
 							THREAD4_TIMESLICE
 							);
 	if(tid4 != RT_NULL) rt_thread_startup(tid4);
+	else return -1;
+	
+	tid5 = rt_thread_create("OLED",
+							thread5_entry, RT_NULL,
+							THREAD5_STACK_SIZE,
+							THREAD5_PRIORITY,
+							THREAD5_TIMESLICE
+							);
+	if(tid5 != RT_NULL) rt_thread_startup(tid5);
 	else return -1;
 	
 	return 0;

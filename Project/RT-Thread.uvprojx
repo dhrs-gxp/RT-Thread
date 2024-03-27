@@ -340,7 +340,7 @@
               <MiscControls></MiscControls>
               <Define>STM32F40_41xxx,USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>..\User;..\CMSIS;..\Library\inc;..\FreeRTOS\include;..\FreeRTOS\port\RVDS\ARM_CM4F;..\MyFiles\delay;..\MyFiles\sys;..\MyFiles\usart;..\MyFiles\led;..\MyFiles\key;..\MyFiles\bit_addr</IncludePath>
+              <IncludePath>..\User;..\CMSIS;..\Library\inc;..\FreeRTOS\include;..\FreeRTOS\port\RVDS\ARM_CM4F;..\MyFiles\delay;..\MyFiles\sys;..\MyFiles\usart;..\MyFiles\led;..\MyFiles\key;..\MyFiles\bit_addr;..\MyFiles\oled</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -434,6 +434,11 @@
               <FileType>1</FileType>
               <FilePath>..\MyFiles\key\key.c</FilePath>
             </File>
+            <File>
+              <FileName>oled.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\MyFiles\oled\oled.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -468,6 +473,11 @@
               <FileName>stm32f4xx_dma.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Library\src\stm32f4xx_dma.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f4xx_i2c.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Library\src\stm32f4xx_i2c.c</FilePath>
             </File>
           </Files>
         </Group>
